@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Case Study Slides</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: #111;
+      display: flex;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 160px;
+      height: 100vh;
+      background: #f5f5f5;
+      overflow-y: auto;
+      padding: 1rem 0.5rem;
+      border-right: 1px solid #ccc;
+      z-index: 1000;
+      scrollbar-width: none; /* Firefox */
+      text-align: center;
+    }
+    #sidebar::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+
+    #sidebar.active {
+      transform: translateX(0);
+    }
+
+  .thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0.5rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+    .thumb img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .thumb span {
+  font-size: 0.9rem;
+  color: #111;
+}
+
+.thumb.active span {
+  color: orange;
+  font-weight: bold;
+}
+
+.sidebar-heading {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #111;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+}
+
+    /* Main content */
+    #main {
+      margin-left: 160px;
+      width: calc(100% - 160px);
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      background-color: white;
+    }
+
+
+
+    #counter {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255,255,255,0.85);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      z-index: 1000;
+      color: #111;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 2rem;
+      right: 1rem;
+      background: #ffffffcc;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+ /* Mobile hamburger container */
+#hamburger {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px; /* fixed height */
+  width: 100%; /* full width bar */
+  align-items: center; /* center icon vertically */
+  justify-content: flex-start;
+  font-size: 1.8rem;
+  background: white;
+  border: none;
+  padding: 0 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1100;
+  color: #111;
+  cursor: pointer;
+}
+#hamburger-icon {
+  line-height: 1; /* prevent vertical stretching */
+}
+
+
+    @media (max-width: 768px) {
+     #hamburger {
+    display: flex;
+  }
+
+      #sidebar {
+        transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    display: block;
+    width: 200px; /* Ensures width on mobile */
+    background: #f5f5f5; /* Optional: reinforces background */
+    padding-top: 5rem;
+      }
+
+      #closeSidebar {
+        display: block;
+      }
+
+      #main {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hamburger Button (Mobile Only) -->
+<button id="hamburger"><span id="hamburger-icon">&#9776;</span></button>
+
+
+  <!-- Sidebar with Thumbnails -->
+<div id="sidebar">
+
+  <h2 class="sidebar-heading">Case Studies</h2>
+  <div class="thumb active" onclick="goToSlide(1)"><span>Overview</span></div>
+  <div class="thumb" onclick="goToSlide(2)"><span>Probelm and Goals</span></div>
+  <div class="thumb" onclick="goToSlide(3)"><span>Research</span></div>
+  <div class="thumb" onclick="goToSlide(4)"><span>User journey 1</span></div>
+  <div class="thumb" onclick="goToSlide(5)"><span>User journey 2</span></div>
+  <div class="thumb" onclick="goToSlide(6)"><span>User Journey Map</span></div>
+  <div class="thumb" onclick="goToSlide(7)"><span>User Flow</span></div>
+  <div class="thumb" onclick="goToSlide(8)"><span>Design Process</span></div>
+  <div class="thumb" onclick="goToSlide(9)"><span>Low-fidelity Prototype</span></div>
+  <div class="thumb" onclick="goToSlide(10)"><span>High-fidelity Prototype</span></div>
+  <div class="thumb" onclick="goToSlide(11)"><span>Accessbility</span></div>
+  <div class="thumb" onclick="goToSlide(12)"><span>Accessbility 1</span></div>
+  <div class="thumb" onclick="goToSlide(13)"><span>Accessbility 2</span></div>
+  <div class="thumb" onclick="goToSlide(14)"><span>Accessbility 3</span></div>
+  <div class="thumb" onclick="goToSlide(15)"><span>Usability Testing</span></div>
+  <div class="thumb" onclick="goToSlide(16)"><span>Reflection</span></div>
+  <div class="thumb" onclick="goToSlide(17)"><span>What I Learned</span></div>
+</div>
+
+
+
+  <!-- Main Slide Viewer -->
+  <div id="main">
+    <div id="counter">1 / 11</div>
+    <button id="backToTop">Back to Top</button>
+
+    <div class="slide" id="slide1"><img src="Frame 54.png" alt="Case Study 1" loading="lazy" /></div>
+    <div class="slide" id="slide2"><img src="Frame 55.png" alt="Case Study 2" loading="lazy" /></div>
+    <div class="slide" id="slide3"><img src="Frame 56.png" alt="Case Study 3" loading="lazy" /></div>
+    <div class="slide" id="slide4"><img src="Frame 57.png" alt="Case Study 4" loading="lazy" /></div>
+    <div class="slide" id="slide5"><img src="Frame 58.png" alt="Case Study 5" loading="lazy" /></div>
+    <div class="slide" id="slide6"><img src="Frame 59.png" alt="Case Study 6" loading="lazy" /></div>
+    <div class="slide" id="slide7"><img src="Frame 60.png" alt="Case Study 7" loading="lazy" /></div>
+    <div class="slide" id="slide8"><img src="Frame 61.png" alt="Case Study 8" loading="lazy" /></div>
+    <div class="slide" id="slide9"><img src="Frame 62.png" alt="Case Study 9" loading="lazy" /></div>
+    <div class="slide" id="slide10"><img src="Frame 63.png" alt="Case Study 10" loading="lazy" /></div>
+    <div class="slide" id="slide11"><img src="Frame 64.png" alt="Case Study 11" loading="lazy" /></div>
+    <div class="slide" id="slide12"><img src="Frame 65.png" alt="Case Study 12" loading="lazy" /></div>
+    <div class="slide" id="slide13"><img src="Frame 66.png" alt="Case Study 13" loading="lazy" /></div>
+    <div class="slide" id="slide14"><img src="Frame 67.png" alt="Case Study 14" loading="lazy" /></div>
+    <div class="slide" id="slide15"><img src="Frame 68.png" alt="Case Study 15" loading="lazy" /></div>
+    <div class="slide" id="slide16"><img src="Frame 69.png" alt="Case Study 16" loading="lazy" /></div>
+    <div class="slide" id="slide17"><img src="Frame 70.png" alt="Case Study 17" loading="lazy" /></div>
+  </div>
+
+  <!-- JavaScript -->
+<script>
+/* --- Elements --- */
+const slides = document.querySelectorAll(".slide");
+const counter = document.getElementById("counter");
+const thumbs = document.querySelectorAll(".thumb");
+const sidebar = document.getElementById("sidebar");
+const hamburger = document.getElementById("hamburger");
+const hamburgerIcon = document.getElementById("hamburger-icon");
+
+/* --- State --- */
+let isFirstLoad = true;
+let isScrollingByClick = false;
+let scrollEndTimer = null;
+
+/* Prevent browser auto-restoring scroll pos (so refresh starts at top) */
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+/* Utility: highlight a thumb index */
+function highlightThumb(index) {
+  thumbs.forEach((thumb, i) => {
+    thumb.classList.toggle("active", i === index);
+  });
+}
+
+/* Find slide whose center is closest to viewport center */
+function getClosestSlideIndex() {
+  if (!slides.length) return 0;
+  const viewportCenter = window.innerHeight / 2;
+  let closestIndex = 0;
+  let closestDistance = Infinity;
+
+  slides.forEach((slide, i) => {
+    const rect = slide.getBoundingClientRect();
+    const slideCenter = rect.top + rect.height / 2;
+    const distance = Math.abs(slideCenter - viewportCenter);
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestIndex = i;
+    }
+  });
+
+  return closestIndex;
+}
+
+/* Update counter + highlight based on visible slide */
+function updateCounter() {
+  if (isScrollingByClick) return; // skip while a programmatic scroll is in progress
+
+  const idx = getClosestSlideIndex();
+
+  counter.textContent = `${idx + 1} / ${slides.length}`;
+  highlightThumb(idx);
+}
+
+/* Called on every scroll; we debounce and detect scroll end */
+function onScroll() {
+  // If a click-initiated scroll is happening, use a longer wait to detect end
+  const wait = isScrollingByClick ? 300 : 120;
+
+  clearTimeout(scrollEndTimer);
+  scrollEndTimer = setTimeout(() => {
+    // if we were in click-scroll mode, switch it off and run final update
+    if (isScrollingByClick) isScrollingByClick = false;
+    updateCounter();
+  }, wait);
+
+  // For responsiveness while actively scrolling, you can also update visually less frequently:
+  // (optional) updateCounter(); // uncomment if you want continuous updates (may be noisy)
+}
+
+/* Scroll to slide (n is 1-based) */
+function goToSlide(n) {
+  if (!slides.length) return;
+  const targetIndex = Math.max(1, Math.min(n, slides.length));
+  const el = document.getElementById(`slide${targetIndex}`);
+  if (!el) return;
+
+  isScrollingByClick = true;         // pause scroll-driven updates
+  highlightThumb(targetIndex - 1);   // immediate visual feedback
+  // center slide in viewport for consistent detection across screen sizes
+  el.scrollIntoView({ behavior: "smooth", block: "center" });
+
+  // safety: if scroll events don't fire for some reason, ensure we resume after a timeout
+  clearTimeout(scrollEndTimer);
+  scrollEndTimer = setTimeout(() => {
+    isScrollingByClick = false;
+    updateCounter();
+  }, 900); // long fallback, scroll end logic will usually clear earlier
+}
+
+/* Initial setup on DOM ready */
+document.addEventListener("DOMContentLoaded", () => {
+  // Start at top
+  window.scrollTo(0, 0);
+
+  // Force first thumb active immediately
+  highlightThumb(0);
+  counter.textContent = `1 / ${slides.length}`;
+
+  // Give layout a tiny moment to settle, then compute accurate highlight
+  setTimeout(() => {
+    updateCounter();
+    isFirstLoad = false;
+  }, 120);
+});
+
+/* Event listeners */
+document.addEventListener("scroll", onScroll, { passive: true });
+
+document.getElementById("backToTop")?.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+hamburger?.addEventListener("click", () => {
+  const isOpen = sidebar.classList.toggle("active");
+  hamburgerIcon.innerHTML = isOpen ? "&times;" : "&#9776;";
+});
+
+document.getElementById("closeSidebar")?.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+  hamburgerIcon.innerHTML = "&#9776;";
+});
+
+// Close sidebar on outside click (mobile)
+document.addEventListener("click", (e) => {
+  const isClickInside = sidebar.contains(e.target) || hamburger.contains(e.target);
+  if (!isClickInside && sidebar.classList.contains("active") && window.innerWidth <= 768) {
+    sidebar.classList.remove("active");
+    hamburgerIcon.innerHTML = "&#9776;";
+  }
+});
+
+// wire thumbs to goToSlide (and close sidebar on mobile)
+thumbs.forEach((thumb, index) => {
+  thumb.addEventListener("click", (ev) => {
+    ev.preventDefault();
+    goToSlide(index + 1);
+    if (window.innerWidth <= 768) {
+      sidebar.classList.remove("active");
+      hamburgerIcon.innerHTML = "&#9776;";
+    }
+  });
+});
+</script>
+
+
+
+</body>
+</html>

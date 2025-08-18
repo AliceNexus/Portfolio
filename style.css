@@ -89,6 +89,7 @@
 /* Universal Styles */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 170px; /* match desktop navbar height */
 }
 
 * {
@@ -98,9 +99,6 @@ html {
   font-family: var(--font-roboto); /* Default to Roboto as fallback */
 }
 
-[id] {
-  scroll-margin-top: 170px; /* Adjust for fixed header */
-}
 
 body {
   display: flex;
@@ -636,12 +634,9 @@ a i.fas.fa-arrow-right {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  [id] {
-  scroll-margin-top: 120px; /* Adjust for fixed header */
-}
-#case__study{
-  scroll-margin-top: 150px; /* Adjust for fixed header */
-}
+  html {
+    scroll-padding-top: 120px; /* match mobile navbar height */
+  }
   .desktop-nav {
     display: none;
   }

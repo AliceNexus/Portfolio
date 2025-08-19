@@ -392,6 +392,7 @@ h1, h2, h3 {
 .submenu li a {
   color: #333;
   display: block;
+  text-decoration: none;
 }
 .hamburger i.fa-times {
   color: rgb(64, 21, 21) !important;
@@ -1403,4 +1404,5 @@ h1, h2, h3 {
   }
 
 }
+
 

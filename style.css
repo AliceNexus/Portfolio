@@ -99,7 +99,7 @@ html {
   font-family: var(--font-roboto); /* Default to Roboto as fallback */
 }
 
-
+  
 body {
   display: flex;
   justify-content: center;
@@ -118,7 +118,13 @@ body {
   background-color: var(--body-bg-color);
   overflow-x: hidden; /* Prevent overflow within container */
 }
-
+.casestudy-text-content a:hover,
+.website-text-content a:hover,
+.landingpage-text-content a:hover {
+  color: #ffffff;   /* change link color */
+  background-color: #000000;
+  transition: 0.6s ease;  /* smooth effect */
+}
 p {
   line-height: 1.5;
   text-align: center;
@@ -853,4 +859,8 @@ padding: .4rem .5rem;
   .image-placeholder{
     width: 55%;
   }
+    .casestudy-content,.website-content,.landingpage-content {
+    gap: 21px;
+  }
 }
+

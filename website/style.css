@@ -614,6 +614,7 @@ h1, h2, h3 {
 .homes-wrapper p {
   color: #6e6e73;
   margin-top: 5px;
+  margin-bottom: 15px;
 }
 .homes-carousel-container {
   position: relative;
@@ -1399,4 +1400,5 @@ h1, h2, h3 {
   .ws-footer-bottom-row {
     font-size: 12px;
   }
+
 }
